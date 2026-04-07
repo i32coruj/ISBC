@@ -1,0 +1,181 @@
+<?xml version="1.0"?>
+<Ontology xmlns="http://www.semanticweb.org/traumatologia#"
+     xml:base="http://www.semanticweb.org/traumatologia"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     ontologyIRI="http://www.semanticweb.org/traumatologia">
+
+    <Declaration><Class IRI="#Paciente"/></Declaration>
+    <Declaration><Class IRI="#Lesion"/></Declaration>
+    <Declaration><Class IRI="#Sintoma"/></Declaration>
+    <Declaration><Class IRI="#Diagnostico"/></Declaration>
+    <Declaration><Class IRI="#PruebaDiagnostica"/></Declaration>
+    <Declaration><Class IRI="#MecanismoLesion"/></Declaration>
+
+    <Declaration><Class IRI="#Esguince"/></Declaration>
+    <Declaration><Class IRI="#Fractura"/></Declaration>
+    <Declaration><Class IRI="#Luxacion"/></Declaration>
+    <Declaration><Class IRI="#RoturaFibrilar"/></Declaration>
+    
+    <SubClassOf><Class IRI="#Esguince"/><Class IRI="#Lesion"/></SubClassOf>
+    <SubClassOf><Class IRI="#Fractura"/><Class IRI="#Lesion"/></SubClassOf>
+    <SubClassOf><Class IRI="#Luxacion"/><Class IRI="#Lesion"/></SubClassOf>
+    <SubClassOf><Class IRI="#RoturaFibrilar"/><Class IRI="#Lesion"/></SubClassOf>
+
+    <Declaration><Class IRI="#DiagnosticoGrave"/></Declaration>
+    <Declaration><Class IRI="#DiagnosticoIA"/></Declaration>
+    <Declaration><Class IRI="#DiagnosticoClinico"/></Declaration>
+    <Declaration><Class IRI="#DiagnosticoPorImagen"/></Declaration>
+
+    <SubClassOf><Class IRI="#DiagnosticoGrave"/><Class IRI="#Diagnostico"/></SubClassOf>
+    <SubClassOf><Class IRI="#DiagnosticoIA"/><Class IRI="#Diagnostico"/></SubClassOf>
+    <SubClassOf><Class IRI="#DiagnosticoClinico"/><Class IRI="#Diagnostico"/></SubClassOf>
+    <SubClassOf><Class IRI="#DiagnosticoPorImagen"/><Class IRI="#Diagnostico"/></SubClassOf>
+
+    <DisjointClasses>
+        <Class IRI="#Diagnostico"/>
+        <Class IRI="#Lesion"/>
+        <Class IRI="#MecanismoLesion"/>
+        <Class IRI="#Paciente"/>
+        <Class IRI="#PruebaDiagnostica"/>
+        <Class IRI="#Sintoma"/>
+    </DisjointClasses>
+
+    <DisjointClasses>
+        <Class IRI="#Esguince"/>
+        <Class IRI="#Fractura"/>
+        <Class IRI="#Luxacion"/>
+        <Class IRI="#RoturaFibrilar"/>
+    </DisjointClasses>
+
+    <Declaration><ObjectProperty IRI="#tieneSintoma"/></Declaration>
+    <Declaration><ObjectProperty IRI="#esSintomaDe"/></Declaration>
+    <Declaration><ObjectProperty IRI="#tieneLesion"/></Declaration>
+    <Declaration><ObjectProperty IRI="#padeceLesion"/></Declaration>
+    <Declaration><ObjectProperty IRI="#requierePrueba"/></Declaration>
+    <Declaration><ObjectProperty IRI="#causadaPor"/></Declaration>
+    <Declaration><ObjectProperty IRI="#generadoPorIA"/></Declaration>
+    <Declaration><ObjectProperty IRI="#confirmaDiagnostico"/></Declaration>
+    <Declaration><ObjectProperty IRI="#diagnosticaLesion"/></Declaration>
+
+    <InverseObjectProperties>
+        <ObjectProperty IRI="#esSintomaDe"/>
+        <ObjectProperty IRI="#tieneSintoma"/>
+    </InverseObjectProperties>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="#padeceLesion"/>
+        <ObjectProperty IRI="#tieneLesion"/>
+    </InverseObjectProperties>
+
+    <ObjectPropertyDomain><ObjectProperty IRI="#tieneSintoma"/><Class IRI="#Lesion"/></ObjectPropertyDomain>
+    <ObjectPropertyRange><ObjectProperty IRI="#tieneSintoma"/><Class IRI="#Sintoma"/></ObjectPropertyRange>
+
+    <ObjectPropertyDomain><ObjectProperty IRI="#tieneLesion"/><Class IRI="#Paciente"/></ObjectPropertyDomain>
+    <ObjectPropertyRange><ObjectProperty IRI="#tieneLesion"/><Class IRI="#Lesion"/></ObjectPropertyRange>
+
+    <ObjectPropertyDomain><ObjectProperty IRI="#requierePrueba"/><Class IRI="#Lesion"/></ObjectPropertyDomain>
+    <ObjectPropertyRange><ObjectProperty IRI="#requierePrueba"/><Class IRI="#PruebaDiagnostica"/></ObjectPropertyRange>
+
+    <ObjectPropertyDomain><ObjectProperty IRI="#causadaPor"/><Class IRI="#Lesion"/></ObjectPropertyDomain>
+    <ObjectPropertyRange><ObjectProperty IRI="#causadaPor"/><Class IRI="#MecanismoLesion"/></ObjectPropertyRange>
+    
+    <ObjectPropertyDomain><ObjectProperty IRI="#generadoPorIA"/><Class IRI="#Diagnostico"/></ObjectPropertyDomain>
+
+    <ObjectPropertyDomain><ObjectProperty IRI="#confirmaDiagnostico"/><Class IRI="#PruebaDiagnostica"/></ObjectPropertyDomain>
+    <ObjectPropertyRange><ObjectProperty IRI="#confirmaDiagnostico"/><Class IRI="#Diagnostico"/></ObjectPropertyRange>
+
+    <ObjectPropertyDomain><ObjectProperty IRI="#diagnosticaLesion"/><Class IRI="#Diagnostico"/></ObjectPropertyDomain>
+    <ObjectPropertyRange><ObjectProperty IRI="#diagnosticaLesion"/><Class IRI="#Lesion"/></ObjectPropertyRange>
+
+    <Declaration><DataProperty IRI="#nivelDolorEVA"/></Declaration>
+    <Declaration><DataProperty IRI="#probabilidadIA"/></Declaration>
+
+    <DataPropertyDomain><DataProperty IRI="#nivelDolorEVA"/><Class IRI="#Paciente"/></DataPropertyDomain>
+    <DataPropertyRange><DataProperty IRI="#nivelDolorEVA"/><Datatype abbreviatedIRI="xsd:integer"/></DataPropertyRange>
+
+    <DataPropertyDomain><DataProperty IRI="#probabilidadIA"/><Class IRI="#DiagnosticoIA"/></DataPropertyDomain>
+    <DataPropertyRange><DataProperty IRI="#probabilidadIA"/><Datatype abbreviatedIRI="xsd:float"/></DataPropertyRange>
+
+    <Declaration><NamedIndividual IRI="#DolorLocalizado"/></Declaration>
+    <Declaration><NamedIndividual IRI="#Inflamacion"/></Declaration>
+    <Declaration><NamedIndividual IRI="#DeformidadVisible"/></Declaration>
+    <Declaration><NamedIndividual IRI="#CrepitacionOsea"/></Declaration>
+    <Declaration><NamedIndividual IRI="#InestabilidadArticular"/></Declaration>
+    <Declaration><NamedIndividual IRI="#ImpotenciaFuncional"/></Declaration>
+
+    <Declaration><NamedIndividual IRI="#TorsionGiroBrusco"/></Declaration>
+
+    <Declaration><NamedIndividual IRI="#Radiografia"/></Declaration>
+    <Declaration><NamedIndividual IRI="#ResonanciaMagnetica"/></Declaration>
+
+    <Declaration><NamedIndividual IRI="#DiagnosticoAutomatico"/></Declaration>
+    <Declaration><NamedIndividual IRI="#DiagnosticoRoturaTibia"/></Declaration>
+
+    <Declaration><NamedIndividual IRI="#CasoFractura1"/></Declaration>
+    <Declaration><NamedIndividual IRI="#PacienteJuan"/></Declaration>
+
+    <ClassAssertion><Class IRI="#Sintoma"/><NamedIndividual IRI="#DolorLocalizado"/></ClassAssertion>
+    <ClassAssertion><Class IRI="#Sintoma"/><NamedIndividual IRI="#Inflamacion"/></ClassAssertion>
+    <ClassAssertion><Class IRI="#Sintoma"/><NamedIndividual IRI="#DeformidadVisible"/></ClassAssertion>
+    <ClassAssertion><Class IRI="#Sintoma"/><NamedIndividual IRI="#CrepitacionOsea"/></ClassAssertion>
+    <ClassAssertion><Class IRI="#Sintoma"/><NamedIndividual IRI="#InestabilidadArticular"/></ClassAssertion>
+    <ClassAssertion><Class IRI="#Sintoma"/><NamedIndividual IRI="#ImpotenciaFuncional"/></ClassAssertion>
+
+    <ClassAssertion><Class IRI="#MecanismoLesion"/><NamedIndividual IRI="#TorsionGiroBrusco"/></ClassAssertion>
+
+    <ClassAssertion><Class IRI="#PruebaDiagnostica"/><NamedIndividual IRI="#Radiografia"/></ClassAssertion>
+    <ClassAssertion><Class IRI="#PruebaDiagnostica"/><NamedIndividual IRI="#ResonanciaMagnetica"/></ClassAssertion>
+
+    <ClassAssertion><Class IRI="#DiagnosticoIA"/><NamedIndividual IRI="#DiagnosticoAutomatico"/></ClassAssertion>
+    <ClassAssertion><Class IRI="#DiagnosticoPorImagen"/><NamedIndividual IRI="#DiagnosticoRoturaTibia"/></ClassAssertion>
+    <ClassAssertion><Class IRI="#DiagnosticoGrave"/><NamedIndividual IRI="#DiagnosticoRoturaTibia"/></ClassAssertion>
+
+    <ClassAssertion><Class IRI="#Paciente"/><NamedIndividual IRI="#PacienteJuan"/></ClassAssertion>
+    <ClassAssertion><Class IRI="#Fractura"/><NamedIndividual IRI="#CasoFractura1"/></ClassAssertion>
+
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#tieneLesion"/>
+        <NamedIndividual IRI="#PacienteJuan"/>
+        <NamedIndividual IRI="#CasoFractura1"/>
+    </ObjectPropertyAssertion>
+
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#tieneSintoma"/>
+        <NamedIndividual IRI="#CasoFractura1"/>
+        <NamedIndividual IRI="#DeformidadVisible"/>
+    </ObjectPropertyAssertion>
+
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#tieneSintoma"/>
+        <NamedIndividual IRI="#CasoFractura1"/>
+        <NamedIndividual IRI="#CrepitacionOsea"/>
+    </ObjectPropertyAssertion>
+
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#requierePrueba"/>
+        <NamedIndividual IRI="#CasoFractura1"/>
+        <NamedIndividual IRI="#Radiografia"/>
+    </ObjectPropertyAssertion>
+
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#confirmaDiagnostico"/>
+        <NamedIndividual IRI="#Radiografia"/>
+        <NamedIndividual IRI="#DiagnosticoRoturaTibia"/>
+    </ObjectPropertyAssertion>
+
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#diagnosticaLesion"/>
+        <NamedIndividual IRI="#DiagnosticoRoturaTibia"/>
+        <NamedIndividual IRI="#CasoFractura1"/>
+    </ObjectPropertyAssertion>
+    
+    <DataPropertyAssertion>
+        <DataProperty IRI="#nivelDolorEVA"/>
+        <NamedIndividual IRI="#PacienteJuan"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">8</Literal>
+    </DataPropertyAssertion>
+
+</Ontology>
